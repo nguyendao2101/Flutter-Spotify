@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spotify/core/config/assets/images_extention.dart';
+import 'package:flutter_spotify/presentation/intro/pages/get_started.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    redirect();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset(ImagesExtention.logoAppSpotify, height: 59, width: 196,),
+        child: SvgPicture.asset(ImagesExtention.logoAppSpotify, height: 59, width: 196,),
       ),
     );
+  }
+  Future<void> redirect() async{
+    await Future.delayed(Duration(seconds: 2));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const GetStarted()));
   }
 }
