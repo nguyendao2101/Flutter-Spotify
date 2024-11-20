@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spotify/common/helpers/is_dark_mode.dart';
 import 'package:flutter_spotify/common/widgets/button/basic_app_button.dart';
 import 'package:flutter_spotify/core/config/assets/images_extention.dart';
+import 'package:flutter_spotify/presentation/auth/pages/signin.dart';
+import 'package:flutter_spotify/presentation/auth/pages/signup.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
@@ -64,14 +66,18 @@ class SignupOrSignin extends StatelessWidget {
                       Expanded(
                           flex: 1,
                           child: BasicAppButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Signup()));
+                              },
                               title: 'Register'),
                       ),
                       const SizedBox(width: 20,),
                       Expanded(
                         flex: 1,
                         child: TextButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const SignIn()));
+                            },
                             child:  Text('Sign In',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
