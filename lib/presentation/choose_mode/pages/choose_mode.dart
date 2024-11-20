@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spotify/main.dart';
+import 'package:flutter_spotify/presentation/choose_mode/bloc/theme_cubit.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
@@ -43,17 +46,22 @@ class ChooseMode extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        ClipOval(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff30393C).withOpacity(0.5),
-                                shape: BoxShape.circle,
+                        GestureDetector(
+                          onTap: (){
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xff30393C).withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(ImagesExtention.moon, fit: BoxFit.none,),
                               ),
-                              child: SvgPicture.asset(ImagesExtention.moon, fit: BoxFit.none,),
                             ),
                           ),
                         ),
@@ -68,17 +76,22 @@ class ChooseMode extends StatelessWidget {
                     const SizedBox(width: 40,),
                     Column(
                       children: [
-                        ClipOval(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff30393C).withOpacity(0.5),
-                                shape: BoxShape.circle,
+                        GestureDetector(
+                          onTap: (){
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xff30393C).withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(ImagesExtention.sun, fit: BoxFit.none,),
                               ),
-                              child: SvgPicture.asset(ImagesExtention.sun, fit: BoxFit.none,),
                             ),
                           ),
                         ),
